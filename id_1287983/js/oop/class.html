@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>oop_class</title>
+</head>
+
+<body>
+    <script>
+        class Course {
+            constructor(cname, cage, c_phone) {
+                this.name = cname;
+                this.age = cage;
+                this.phone = c_phone;
+            }
+
+            show() {
+                document.write("My Name is: " + this.name + " and my age is " + this.age + "<br>");
+            }
+        }
+
+        const wdpf = new Course("Hares Islam", 25, "01236549875");
+        wdpf.show();
+        document.write("This is " + wdpf.name + " and age " + wdpf.age + " and phone " + wdpf.phone);
+    </script>
+</body>
+
+
+</html>
