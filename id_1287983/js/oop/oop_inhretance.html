@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oop_inheritance</title>
+</head>
+<body>
+    <h1>oop inheritance</h1>
+    <script>
+        class Vehicle { // Base class
+            constructor(brand, model, year) {
+                this.brand = brand;
+                this.model = model;
+                this.year = year;
+            }
+
+            startEngine() {
+                console.log(`${this.brand} ${this.model} engine started.`);
+            }
+
+            stopEngine() {
+                console.log(`${this.brand} ${this.model} engine stopped.`);
+            }
+
+            getDetails() {
+                return `${this.brand} ${this.model} (${this.year})`;
+            }
+        }
+        class Car extends Vehicle { // Derived class    
+            constructor(brand, model, year, fuelType, transmission) {
+                super(brand, model, year); // Call the parent class constructor
+                this.fuelType = fuelType;
+                this.transmission = transmission;
+                this.speed = 0;
+            }
+
+            getDetails() { // Override method
+                return `${super.getDetails()} - ${this.fuelType}, ${this.transmission}`;
+            }
+
+            accelerate(amount) {
+                this.speed += amount;
+                console.log(`${this.brand} ${this.model} accelerated to ${this.speed} km/h.`);
+            }
+
+            brake(amount) {
+                this.speed -= amount;
+                console.log(`${this.brand} ${this.model} slowed down to ${this.speed} km/h.`);
+            }
+        }
+        // Example usage
+        const myCar = new Car("Toyota", "Camry", 2020, "Petrol", "Automatic");
+        myCar.startEngine();
+        console.log(myCar.getDetails());
+        myCar.accelerate(50);
+        myCar.brake(20);
+        myCar.stopEngine();
+    </script>
+    //now we explain every code steep by steep
+    <h2>Explanation</h2>
+    <p>
+        The code defines a base class <code>Vehicle</code> and a derived class <code>Car</code>. The <code>Vehicle</code> class has properties like <code>brand</code>, <code>model</code>, and <code>year</code>, and methods to start and stop the engine, as well as to get the vehicle's details.
+    </p> 
+    <p>
+        The <code>Car</code> class extends the <code>Vehicle</code> class, inheriting its properties and methods. It adds additional properties like <code>fuelType</code> and <code>transmission</code>, and overrides the <code>getDetails</code> method to include these new properties. The <code>Car</code> class also has methods to accelerate and brake, which are specific to cars.
+    </p>
+    <p>
+        An instance of the <code>Car</code> class is created, and its methods are called to demonstrate the functionality of inheritance, encapsulation, and polymorphism in object-oriented programming.
+    </p>
+    <p>
+        Inheritance allows the <code>Car</code> class to reuse code from the <code>Vehicle</code> class, encapsulation hides the internal state of the objects, and polymorphism allows the <code>Car</code> class to provide its own implementation of the <code>getDetails</code> method.
+    </p>
+    <p>
+        This example illustrates the core principles of object-oriented programming, showcasing how classes can be structured to promote code reuse and maintainability.
+    </p>
+</p>
+
+</body>
+</html>
