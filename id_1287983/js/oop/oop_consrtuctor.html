@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>oop_constructor</title>
+</head>
+<body>
+    <script>
+        class User {
+  constructor(name, id, password, email, designation) {
+    this.name = name;
+    this.id = id;
+    this.password = password;
+    this.email = email;
+    this.designation = designation;
+  }
+
+  showInfo() {
+    alert(`Name: ${this.name}, ID: ${this.id}, Passwords: ${this.password}, Email: ${this.email}, Designation: ${this.designation}`);
+  }
+}
+
+// Usage
+const user1 = new User("Bob", 102, "secure@456", "bob@example.com", "Developer");
+user1.showInfo();
+
+    </script>
+</body>
+</html>
