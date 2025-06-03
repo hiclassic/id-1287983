@@ -15,17 +15,18 @@
                 this.year = year;
             }
 
-            startEngine() {
+            startEngine() { // Method to start the engine
                 console.log(`${this.brand} ${this.model} engine started.`);
             }
 
-            stopEngine() {
+            stopEngine() { // Method to stop the engine
                 console.log(`${this.brand} ${this.model} engine stopped.`);
             }
 
-            getDetails() {
+            getDetails() { //
                 return `${this.brand} ${this.model} (${this.year})`;
-            }
+            } // Method to get the details of the vehicle
+            //why return here? because we want to get the details of the vehicle and return it as a string
         }
         class Car extends Vehicle { // Derived class    
             constructor(brand, model, year, fuelType, transmission) {
