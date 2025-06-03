@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oop_inheritance</title>
+</head>
+<body>
+    <script>
+        class Vehicle { //here we are creating a base class is called Vehicle;
+  constructor(brand, model, year) { // Constructor for Vehicle and it will be used to initialize the properties of the class example brand, model, year
+    this.brand = brand; // Properties of the class that will be initialized by the constructor
+    this.model = model;
+    this.year = year;
+  }
+
+  startEngine() { // Method to start the engine 
+    console.log(`${this.brand} ${this.model} engine started.`); 
+  }
+
+  stopEngine() { // Method to stop the engine and it will be used to stop the engine of the vehicle
+    console.log(`${this.brand} ${this.model} engine stopped.`);
+  }
+
+  getDetails() { // Method to get the details of the vehicle
+  
+    // The super keyword is used to call the parent class's method
+    // In this case, it returns a string with the vehicle's brand, model, and year.
+    return `${this.brand} ${this.model} (${this.year})`; // This is an example of encapsulation, where the details of the vehicle are hidden  and can only be accessed through the getDetails() method.
+  }
+}
+
+        class Car extends Vehicle { // Here we are creating a subclass of Vehicle called Car
+  // Constructor for Car, which extends Vehicle
+  // It inherits properties and methods from Vehicle
+  // and adds its own properties like fuelType and transmission
+  // This is an example of inheritance, where the Car class inherits properties and methods from the Vehicle class.
+  // The super keyword is used to call the parent class's constructor
+  // In this case, it initializes the brand, model, and year properties of the Vehicle class.
+  // The Car class also has its own properties like fuelType and transmission.
+  // It also has its own methods like accelerate() and brake() that are specific to the Car class.
+  // It also has its own methods like accelerate() and brake() that are specific to the Car class.
+  // This is an example of encapsulation, where the details of the Car class are hidden and can only be accessed through the methods of the Car class.
+  constructor(brand, model, year, fuelType, transmission) {
+    super(brand, model, year); // Inherit from Vehicle
+    this.fuelType = fuelType;
+    this.transmission = transmission;
+    this.speed = 0;
+  }
+
+  // Polymorphism: Override getDetails()
+  getDetails() { // This method overrides the getDetails() method of the Vehicle class
+    // It adds fuelType and transmission to the details of the car
+    // This is an example of polymorphism, where the Car class provides its own implementation of the getDetails() method.
+    return `${super.getDetails()} - ${this.fuelType}, ${this.transmission}`;
+  } // This is an example of encapsulation, where the details of the Car class are hidden and can only be accessed through the getDetails() method.
+  // This method overrides the getDetails() method of the Vehicle class
+
+
+
+  accelerate(amount) { // Method to accelerate the car
+    this.speed += amount;
+    console.log(`${this.model} accelerated to ${this.speed} km/h`);
+  } // This method is specific to the Car class and it will be used to accelerate the car
+
+  brake(amount) { // Method to brake the car
+    this.speed = Math.max(0, this.speed - amount);
+    console.log(`${this.model} slowed down to ${this.speed} km/h`);
+  } // This method is specific to the Car class and it will be used to brake the car
+
+} 
+const myCar = new Car("Toyota", "Corolla", 2022, "Petrol", "Automatic"); // Create an instance of Car
+// This is an example of encapsulation, where the details of the Car class are hidden and can only be accessed through the methods of the Car class.
+
+myCar.startEngine();           // Inherited
+console.log(myCar.getDetails()); // Overridden
+myCar.accelerate(60); // Inherited and overridden
+myCar.brake(20); // Inherited and overridden
+myCar.stopEngine();  // Inherited  here we are creating an instance of the Car class and calling
+        const myVehicle = new Vehicle("Honda", "Civic", 2020); // the methods of the Car class
+        myVehicle.startEngine(); 
+        console.log(myVehicle.getDetails());  
+        myVehicle.stopEngine(); 
+        const myCar2 = new Car("Ford", "Mustang", 2021, "Gasoline", "Manual");  
+        myCar2.startEngine();
+        console.log(myCar2.getDetails()); 
+        myCar2.accelerate(80); 
+        myCar2.brake(30);
+        myCar2.stopEngine();   
+        const myCar3 = new Car( "Tesla", "Model S", 2023, "Electric", "Automatic");
+        console.log(myCar3.getDetails());
+        myCar3.accelerate(100);
+        myCar3.brake(50);
+        myCar3.stopEngine(); 
+
+    </script>
+</body>
+</html>
