@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form_oop</title>
+</head>
+<body>
+    <p>dynamic form creation with javascript oop</p>
+    <script>
+        class Form {
+            constructor(formId) {
+                this.formId = formId;
+                this.formElement = document.getElementById(formId);
+            }
+
+            addInput(type, name, placeholder) {
+                const input = document.createElement('input');
+                input.type = type;
+                input.name = name;
+                input.placeholder = placeholder;
+                this.formElement.appendChild(input);
+            }
+
+            addButton(text) {
+                const button = document.createElement('button');
+                button.type = 'submit';
+                button.textContent = text;
+                this.formElement.appendChild(button);
+            }
+
+            submitForm(callback) {
+                this.formElement.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    callback(new FormData(this.formElement));
+                });
+            }
+        }
+
+        const myForm = new Form('myForm');
+        myForm.addInput('text', 'username', 'Enter your username');
+        myForm.addInput('password', 'password', 'Enter your password');
+        myForm.addButton('Submit');
+
+        myForm.submitForm((formData) => {
+            console.log('Form submitted:', Object.fromEntries(formData.entries()));
+        });
+    </script>
+    <form id="myForm"></form>
+    <p>Check the console for form submission data.</p>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            margin: 20px auto;
+        }
+        input, button {
+            margin: 5px 0;
+            padding: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        input {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        p {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        
+    </style>
+
+    <script>
+        // This script is to ensure the form is created after the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const myForm = new Form('myForm');
+            myForm.addInput('text', 'username', 'Enter your username');
+            myForm.addInput('password', 'password', 'Enter your password');
+            myForm.addButton('Submit');
+
+            myForm.submitForm((formData) => {
+                console.log('Form submitted:', Object.fromEntries(formData.entries()));
+            });
+        });                 
+       
+</script>
+
+</script>
+</body>
+</html>

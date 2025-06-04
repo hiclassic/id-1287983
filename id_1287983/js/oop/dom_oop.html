@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom_oop_open</title>
+  </head>
+  <body>
+    <form action="#" name="form">
+      Name:
+      <input type="text" name="name" placeholder="Enter your name" /><br />
+      Age: <input type="number" name="age" placeholder="Enter your age" /><br />
+      Phone:
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Enter your phone number"
+      /><br />
+      address:
+      <input
+        type="text"
+        name="address"
+        placeholder="Enter your address"
+      /><br />
+      <button type="submit">Submit</button>
+      <button type="reset" class="btn btn-primary">Reset</button>
+    </form>
+
+    <script>
+      class FormHandler {
+        constructor(formName) {
+          this.form = document.forms[formName];
+          this.form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            this.handleSubmit();
+          });
+        }
+
+        handleSubmit() {
+          const formData = new FormData(this.form);
+          const data = Object.fromEntries(formData.entries());
+          console.log("Form submitted:", data);
+        }
+      }
+      const formHandler = new FormHandler("form");
+      formHandler.form.addEventListener("reset", () => {
+        console.log("Form reset");
+      });
+      formHandler.form.addEventListener("submit", () => {
+        console.log("Form submitted");
+      });
+      formHandler.form.addEventListener("change", () => {
+        console.log("Form changed");
+      });
+      formHandler.form.addEventListener("input", () => {
+        console.log("Form input changed");
+      });
+      formHandler.form.addEventListener(
+        "focus",
+        () => {
+          console.log("Form focused");
+        },
+        true
+      );
+      formHandler.form.addEventListener(
+        "blur",
+        () => {
+          console.log("Form blurred");
+        },
+        true
+      );
+    //   formHandler.form.addEventListener("click", () => {
+    //     console.log("Form clicked");
+    //   });
+    //   formHandler.form.addEventListener("keydown", (event) => {
+    //     console.log("Key down:", event.key);
+    //   });
+    //   formHandler.form.addEventListener("keyup", (event) => {
+    //     console.log("Key up:", event.key);
+    //   });
+    //   formHandler.form.addEventListener("keypress", (event) => {
+    //     console.log("Key pressed:", event.key);
+    //   });
+    //   formHandler.form.addEventListener("contextmenu", (event) => {
+    //     event.preventDefault();
+    //     console.log("Context menu opened");
+    //   });
+    //   formHandler.form.addEventListener("dragstart", (event) => {
+    //     console.log("Drag started");
+    //   });
+    //   formHandler.form.addEventListener("dragend", (event) => {
+    //     console.log("Drag ended");
+    //   });
+    //   formHandler.form.addEventListener("dragover", (event) => {
+    //     event.preventDefault();
+    //     console.log("Drag over");
+    //   });
+    //   formHandler.form.addEventListener("drop", (event) => {
+    //     event.preventDefault();
+    //     console.log("Dropped");
+    //   });
+    </script>
+  </body>
+</html>
