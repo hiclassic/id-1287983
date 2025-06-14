@@ -40,8 +40,7 @@
           const formData = new FormData(this.form);
           const data = Object.fromEntries(formData.entries());
           console.log("Form submitted:", data);
-        }
-      }
+        } }
       const formHandler = new FormHandler("form");
       formHandler.form.addEventListener("reset", () => {
         console.log("Form reset");
